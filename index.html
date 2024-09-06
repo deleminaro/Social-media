@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        
-        <style>
-        </style>
-    </head>
-    <body>
-        <h1 style= color: yellow;> test<h1>
-    </body>
+<head>
+    <title>Video Chat</title>
+</head>
+<body>
+    <h1>Video Chat</h1>
+    <video id="localVideo" autoplay playsinline></video>
+    <video id="remoteVideo" autoplay playsinline></video>
+
+    <script>
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+
+        // Запрос доступа к камере и микрофону
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then(stream => {
+                localVideo.srcObject = stream;
+
+                // Здесь можно добавить код для отправки потока на удаленный сервер
+                // и получения удаленного потока для отображения в remoteVideo
+            })
+            .catch(error => {
+                console.error('Error accessing media devices.', error);
+            });
+    </script>
+</body>
 </html>
