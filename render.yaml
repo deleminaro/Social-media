@@ -1,14 +1,12 @@
-blueprints:
-  - name: social-media-backend
-    services:
-      - type: web
-        name: social-media-backend
-        env: node
-        buildCommand: npm install
-        startCommand: npm start
-        envVars:
-          - key: RAPIDAPI_KEY
-            value: 66ca739289mshf198812c27f0b64p199b2ejsn4c5b4d56f2f2
-          - key: SOUNDCLOUD_CLIENT_ID
-            value: f6k2kBKdKxsBaJCEeHQHScqQLINy5UUN
-        branches: main
+services:
+  - type: web
+    name: social-media-backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: RAPIDAPI_KEY
+        value: 66ca739289mshf198812c27f0b64p199b2ejsn4c5b4d56f2f2
+      - key: SOUNDCLOUD_CLIENT_ID
+        value: f6k2kBKdKxsBaJCEeHQHScqQLINy5UUN
+    branches: main
