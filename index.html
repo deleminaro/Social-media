@@ -1,115 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SoundCloud Search & Play</title>
-  <script src="https://connect.soundcloud.com/sdk.js"></script>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      background-color: #ff5500;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    main {
-      flex: 1;
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .search-box {
-      display: flex;
-      margin-bottom: 20px;
-    }
-
-    .search-box input {
-      flex: 1;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px 0 0 4px;
-    }
-
-    .search-box button {
-      padding: 12px 20px;
-      background-color: #ff5500;
-      border: none;
-      color: white;
-      font-size: 16px;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-    }
-
-    .search-box button:hover {
-      background-color: #e64e00;
-    }
-
-    #track {
-      margin-top: 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #eee;
-      font-size: 14px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Platform Music Search</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>SoundCloud Search & Play</header>
+  <header>
+    <h1>Music Search</h1>
+    <input type="text" id="searchInput" placeholder="Search for a track...">
+    <button onclick="searchTrack()">Search</button>
+  </header>
   <main>
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search for songs or artists...">
-      <button onclick="searchTrack()">Search</button>
-    </div>
-    <div id="track"></div>
+    <section id="soundcloudResults"></section>
+    <section id="youtubeResults"></section>
+    <section id="spotifyResults"></section>
   </main>
-  <footer>Powered by SoundCloud API</footer>
-
-  <script>
-    const CLIENT_ID = 'f6k2kBKdKxsBaJCEeHQHScqQLINy5UUN'; // <-- Replace with your actual client ID
-
-    SC.initialize({ client_id: CLIENT_ID });
-
-    function searchTrack() {
-      const query = document.getElementById('searchInput').value.trim();
-      const trackDiv = document.getElementById('track');
-      trackDiv.innerHTML = 'Searching...';
-
-      SC.get('/tracks', { q: query, limit: 1 }).then(tracks => {
-        if (tracks.length > 0) {
-          SC.oEmbed(tracks[0].permalink_url, {
-            auto_play: true,
-            element: trackDiv
-          });
-        } else {
-          trackDiv.innerHTML = '<p>No tracks found.</p>';
-        }
-      }).catch(err => {
-        console.error(err);
-        trackDiv.innerHTML = '<p>Error fetching track. Please try again.</p>';
-      });
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
