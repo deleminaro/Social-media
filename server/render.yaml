@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: social-media-backend
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: RAPIDAPI_KEY
+        value: your_rapidapi_key_here
+      - key: SOUNDCLOUD_CLIENT_ID
+        value: your_soundcloud_client_id_here
+    branches: main
