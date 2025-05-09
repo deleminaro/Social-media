@@ -1,0 +1,16 @@
+{
+  "name": "social-media",
+  "version": "1.0.0",
+  "description": "A web app that lets users search and play songs from SoundCloud, YouTube, and Spotify using RapidAPI.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "dotenv": "^16.3.1",
+    "express": "^4.19.2"
+  }
+}
